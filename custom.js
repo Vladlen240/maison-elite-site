@@ -33,6 +33,42 @@
   addEventListener('load', fade);
   fade();
 
+  // Contact form: send requests to the inbox through FormSubmit.co instead of Framer's form API, which
+  // a site hosted outside Framer can't rely on. Framer still drives the button states and the "Thank you" popup.
+  const FORM_INBOX = 'vladlenbordugov@gmail.com';
+  // Framer's hidden anti-spam fields: a bot fills them, a person never sees them
+  const HONEYPOTS = ['website', 'company', 'message', 'subject', 'title', 'description', 'feedback', 'notes', 'details', 'remarks', 'comments'];
+  const nativeFetch = window.fetch.bind(window);
+  window.fetch = async (input, init) => {
+    const url = typeof input === 'string' ? input : input && input.url;
+    if (!/api\.framer\.com\/forms\//.test(url || '') || !(init && init.body instanceof FormData)) return nativeFetch(input, init);
+    const data = {};
+    let spam = false;
+    init.body.forEach((v, k) => {
+      if (typeof v !== 'string' || !v.trim()) return;
+      if (HONEYPOTS.includes(k)) spam = true;
+      else data[k] = v.trim();
+    });
+    if (spam) return new Response('{}', { status: 200 });
+    data._subject = 'New request from the MAISON ÉLITE website';
+    data._template = 'table';
+    data._captcha = 'false';
+    if (data['E-MAIL']) data._replyto = data['E-MAIL'];
+    try {
+      const res = await nativeFetch(`https://formsubmit.co/ajax/${FORM_INBOX}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (res.ok && String(json.success) === 'true') return new Response('{}', { status: 200 });
+      // Framer shows its error state for a non-ok response with { error: { message } }
+      return new Response(JSON.stringify({ error: { message: json.message || 'Form submission failed' } }), { status: 400 });
+    } catch (err) {
+      return new Response(JSON.stringify({ error: { message: String(err) } }), { status: 502 });
+    }
+  };
+
   // "Discuss the projects" button scrolls to the contact form section.
   // Native smooth scrolling is swallowed by Framer's Lenis, so the scroll is animated frame by frame.
   const smoothScrollTo = (top, duration = 1200) => {
