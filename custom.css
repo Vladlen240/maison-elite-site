@@ -1,10 +1,12 @@
 /* Framer refers to some text as "HelveticaNeueCyr" and "Carl Brown" but only ships the files under their
    style names ("HelveticaNeueCyr Thin", "Carl Brown Regular", ...). Without these aliases those texts fall back to
    whatever is installed locally (fine on a machine with the fonts, Arial on a Mac without them). */
-@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/uKZXsBbrt0ELXYUUA5w2QHetYY.woff2") format("woff2"); font-weight: 100 200; font-style: normal; font-display: swap; }
-@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/zWZNzPo6AWatAU0qn5ZQYSfWMq0.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/Z7FaTsQ2nNlVi3VXGr8wEzDzio.woff2") format("woff2"); font-weight: 400 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/3MDOR0qWQygkcyxuwPCyjXxw09s.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+/* Helvetica (Helvetica Now Display, HelveticaNeueCyr) is replaced with Inter Tight (SIL OFL, free for commercial use):
+   the Framer family names stay, but every one of their files is now an Inter Tight weight (assets/InterTight-*.woff2). */
+@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-Thin.woff2") format("woff2"); font-weight: 100 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-Regular.woff2") format("woff2"); font-weight: 400 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-MediumItalic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
 @font-face { font-family: "Carl Brown"; src: url("assets/cs8YAogtknM15124RaZ9uUrrUg.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 
 /* "Discuss the projects" scrolls to the form (custom.js). */
