@@ -1,0 +1,271 @@
+/* "Discuss the projects" scrolls to the form (custom.js). */
+#main .framer-GQaEC { cursor: pointer; }
+
+/* Form submit button: the box narrows on hover and Framer's layout animation briefly stretches and shifts
+   the label to compensate, so the "D" twitches. The label is absolutely positioned, so it can stay put. */
+#main .framer-yjl67 .framer-1m93nzy { transform: none !important; }
+
+/* Form "Thank you" popup, laid out to the Figma "Поп ап вікно" / "Поп ап вікно (моб)" frames.
+   It is rendered in a portal outside #main. Close icon: 30x30, 14px from the top right corner. */
+.framer-vXEtK :is(.framer-h9ceo8-container, .framer-1sgk8f-container) { width: 30px !important; height: 30px !important; }
+/* desktop: 600x348 on the 1440 grid, scaled with the window like the sections (--z from custom.js) */
+@media (min-width: 810px) {
+  .framer-v9wAH.framer-13yjfnc-container { transform: scale(var(--z, 1)); }
+}
+/* phone: 20px side gutters, 418px tall, 208px text column, 186px paragraph */
+@media (max-width: 809.98px) {
+  .framer-v9wAH.framer-13yjfnc-container {
+    left: 20px !important; right: 20px !important; width: auto !important;
+    height: 418px !important; top: calc(50% - 209px) !important;
+  }
+  .framer-vXEtK.framer-v-g3lmyr .framer-19as773 { width: 208px !important; }
+  /* one line as in Figma (the web font runs a little wider), centred by the column */
+  .framer-vXEtK.framer-v-g3lmyr .framer-n6uv95 { width: max-content !important; white-space: pre !important; }
+  .framer-vXEtK.framer-v-g3lmyr .framer-1e9j9ub { width: 186px !important; }
+}
+
+/* Figma has no blur on the keyhole. */
+
+#main .framer-melogr { filter: none !important; }
+
+/* First-screen text is selectable while the page is at the top (data-top is set by custom.js). */
+html[data-top] #main .framer-bwq5tf :is(h1, p, .framer-text) { pointer-events: auto; user-select: text; cursor: text; }
+
+/* Keep first-screen text vector-sharp while Framer scales it up on scroll
+   (will-change: transform makes Chrome scale a cached bitmap instead of re-drawing the glyphs). */
+#main .framer-bwq5tf { will-change: auto !important; }
+
+/* --scroll-hint is set by custom.js */
+@media (min-width: 810px) { #main .framer-5nktg4 { opacity: var(--scroll-hint, 1) !important; } }
+
+/* First screen laid out to the Figma frame (1440x810), scaled by container width. */
+@media (min-width: 810px) {
+  #main .framer-z3prr2 {
+    container-type: size;
+    --x: calc(100cqw / 1440);
+    --u: min(100cqw / 1440, 100cqh / 810);
+    --k: max(100cqw / 1440, 100cqh / 810);
+  }
+
+  #main .framer-bwq5tf {
+    inset: 0 !important; width: 100% !important; height: 100% !important;
+    min-height: 0 !important; display: block !important;
+  }
+
+  /* headline + subheading */
+  #main .framer-11rf8cc {
+    position: absolute !important; left: calc(110 * var(--x)) !important; top: calc(110 * var(--u)) !important;
+    width: calc(806 * var(--u)) !important; height: auto !important;
+    display: flex !important; flex-direction: column !important; align-items: flex-start !important;
+    gap: calc(28 * var(--u)) !important;
+  }
+  #main .framer-1azy7ph { width: 100% !important; height: auto !important; }
+  #main .framer-1azy7ph :is(h1, .framer-text) {
+    font-size: calc(86 * var(--u)) !important; line-height: calc(90 * var(--u)) !important;
+    letter-spacing: -0.03em !important;
+  }
+  #main .framer-1azy7ph h1 * { font-size: inherit !important; line-height: inherit !important; }
+  #main .framer-1azy7ph h1 { height: calc(90 * var(--u)) !important; overflow: visible !important; }
+  #main .framer-c8bkar { display: flex !important; gap: calc(72 * var(--u)) !important; width: auto !important; height: auto !important; }
+  #main .framer-d9f51e { display: flex !important; gap: calc(36 * var(--u)) !important; width: auto !important; height: auto !important; }
+  #main .framer-dacss9 { width: calc(118 * var(--u)) !important; }
+  #main .framer-17tbeqp { width: calc(152 * var(--u)) !important; }
+
+  /* top right description */
+  #main .framer-8e1ato {
+    left: calc(802 * var(--x)) !important; right: auto !important; top: calc(110 * var(--u)) !important;
+    width: calc(376 * var(--u)) !important; transform: none !important;
+  }
+  #main .framer-o6h9rg { display: flex !important; gap: calc(10 * var(--u)) !important; height: calc(34 * var(--u)) !important; width: 100% !important; }
+  #main .framer-xmt9zl { width: calc(144 * var(--u)) !important; height: calc(34 * var(--u)) !important; }
+  #main .framer-1jfwnz3 { width: calc(222 * var(--u)) !important; margin-top: calc(3 * var(--u)) !important; }
+
+  /* 200+ projects */
+  #main .framer-1aunr37 {
+    left: calc(875 * var(--x)) !important; right: auto !important; top: calc(50% - 16 * var(--u)) !important; bottom: auto !important;
+    width: calc(345 * var(--u)) !important; height: auto !important; transform: none !important;
+    display: flex !important; flex-direction: column !important; gap: calc(40 * var(--u)) !important;
+  }
+  #main .framer-l7pzan { position: relative !important; display: block !important; width: calc(187 * var(--u)) !important; height: calc(97 * var(--u)) !important; }
+  #main .framer-l5w3xv { position: absolute !important; inset: 0 auto auto 0 !important; display: block !important; width: calc(187 * var(--u)) !important; height: calc(84 * var(--u)) !important; }
+  #main .framer-4zymwx { position: absolute !important; left: 0 !important; top: calc(6 * var(--u)) !important; width: calc(135 * var(--u)) !important; height: calc(77 * var(--u)) !important; }
+  #main .framer-15vy636 { position: absolute !important; left: calc(135 * var(--u)) !important; top: 0 !important; width: calc(52 * var(--u)) !important; height: calc(84 * var(--u)) !important; }
+  #main .framer-4zymwx :is(h1, .framer-text) { font-size: calc(86 * var(--u)) !important; line-height: calc(77 * var(--u)) !important; letter-spacing: -0.05em !important; }
+  #main .framer-15vy636 :is(h1, .framer-text) { font-size: calc(86 * var(--u)) !important; line-height: calc(84 * var(--u)) !important; letter-spacing: 0 !important; }
+  #main .framer-ng3xs1 { position: absolute !important; left: calc(4 * var(--u)) !important; top: calc(83 * var(--u)) !important; }
+  #main .framer-1a3ueak { display: flex !important; width: 100% !important; height: auto !important; }
+  #main .framer-9qpx7k { margin: calc(15 * var(--u)) 0 0 calc(158 * var(--u)) !important; width: calc(187 * var(--u)) !important; }
+
+  /* scroll down */
+  #main .framer-5nktg4 {
+    left: calc(50% - 51.5 * var(--u)) !important; right: auto !important; top: auto !important; bottom: calc(110 * var(--u)) !important;
+    width: calc(103 * var(--u)) !important; height: calc(115 * var(--u)) !important; display: block !important;
+  }
+  #main .framer-1fkczi2 { position: absolute !important; left: calc(39.5 * var(--u)) !important; top: 0 !important; width: calc(24 * var(--u)) !important; height: calc(68 * var(--u)) !important; }
+  #main .framer-1fkczi2 svg { width: 100% !important; height: 100% !important; }
+  #main .framer-1dzsz08 { position: absolute !important; left: 0 !important; top: calc(101 * var(--u)) !important; width: 100% !important; }
+
+  /* logo in the keyhole */
+  #main .framer-100nmfr { width: calc(51 * var(--k)) !important; height: calc(49 * var(--k)) !important; }
+  #main .framer-1vs89zy { width: 100% !important; height: 100% !important; }
+
+  /* all small captions: 14px, line height 100% */
+  #main :is(.framer-1ns00q9, .framer-dacss9, .framer-17tbeqp, .framer-y2uh28, .framer-1jfwnz3, .framer-ng3xs1, .framer-9qpx7k, .framer-1dzsz08) :is(p, h1, h2, h3, .framer-text) {
+    font-size: calc(14 * var(--u)) !important; line-height: 1 !important; letter-spacing: 0 !important;
+  }
+}
+
+/* Phone: first screen laid out to the Figma "Мобільна версія ( 375 px )" frame. */
+@media (max-width: 809.98px) {
+  /* frame outline inset 20px on every side */
+  #main .framer-eahscv { inset: 20px !important; width: auto !important; height: auto !important; }
+  #main .framer-eahscv img { width: 100% !important; height: 100% !important; }
+
+  /* headline 42px / 90%, -3%; 238px wide, 20px above the subtitle */
+  #main .framer-11rf8cc { width: 238px !important; gap: 20px !important; }
+  #main .framer-1azy7ph { width: 238px !important; }
+  #main .framer-1azy7ph :is(h1, .framer-text) { font-size: 42px !important; line-height: 0.9 !important; letter-spacing: -0.03em !important; }
+  #main .framer-1azy7ph h1 * { font-size: inherit !important; line-height: inherit !important; }
+  /* subtitle 12px / 100%, 228px wide */
+  #main .framer-c8bkar { width: 228px !important; }
+  #main .framer-pj3na3 { width: 228px !important; }
+  #main .framer-pj3na3 :is(p, .framer-text) { font-size: 12px !important; line-height: 1 !important; }
+
+  /* keyhole a bit larger (x1.12) and lower (circle centre 49.86% -> 54.46% of the height). The whole layer
+     is resized, not the image inside, so Framer's scroll zoom still flies straight into the hole. */
+  #main .framer-melogr { top: -1.4% !important; left: -6% !important; width: 112% !important; height: 112% !important; }
+
+  /* logo 37x37 (33 x 1.12) in the centre of the keyhole circle */
+  /* only in the first-screen variant: when Framer switches the variant the logo travels up to the header */
+  #main .framer-v-1aua4hr .framer-100nmfr { top: 54.46% !important; width: 37px !important; height: 37px !important; }
+  /* scoped too: in the header variant the box is min-content, so 100% would collapse the logo to 0x0 */
+  #main .framer-v-1aua4hr .framer-1vs89zy { width: 100% !important; height: 100% !important; }
+  /* header variant: the logo flies up and stops 20px below the top edge */
+  #main .framer-v-4tn2jk .framer-100nmfr { top: 20px !important; }
+
+  /* scroll hint: 20x57 arrow, 20px gap, 12px caption */
+  #main .framer-5nktg4 { width: 88px !important; gap: 20px !important; }
+  #main .framer-1fkczi2 { width: 20px !important; height: 57px !important; }
+  #main .framer-1fkczi2 svg { width: 100% !important; height: 100% !important; }
+  #main .framer-1dzsz08 { width: 88px !important; }
+  #main .framer-1dzsz08 :is(p, .framer-text) { font-size: 12px !important; line-height: 1 !important; }
+}
+
+/* Desktop: every section below the first screen keeps the 1440px Figma grid and scales with the window.
+   --z = window width / 1440, set by custom.js */
+@media (min-width: 810px) {
+  #main :is(.framer-1xlo8wj, .framer-1go8jus, .framer-snky5l, .framer-1lqipmx, .framer-1u3x6mn, .framer-xymgrm-container) {
+    zoom: var(--z, 1);
+  }
+}
+
+/* Desktop: positions below follow the Figma "Продовження" frame (1440 grid, scaled by the zoom above). */
+@media (min-width: 810px) {
+  /* Our approach: "( 01 )" first, 45px gap, then the title */
+  #main :is(.framer-cw0n1o, .framer-qobzce) { gap: 45px !important; justify-content: flex-start !important; }
+  #main :is(.framer-11r4qp4, .framer-1cjdxqt) { order: -1; flex: none !important; width: auto !important; }
+  #main :is(.framer-116npya, .framer-qbqbjm) { flex: none !important; width: auto !important; margin-top: 2px; }
+  #main .framer-tyajxq { left: 19px; }
+  /* the button's right edge sits on the block edge in Figma; the web font runs a little wider, so don't clip "projects" sideways */
+  #main :is(.framer-161v7lm, .framer-cu6t08) { overflow-x: visible !important; overflow-y: clip !important; }
+
+  /* Portfolio: works block on the 110px margin, cards at their Figma offsets */
+  #main .framer-r7khef { left: -39px; }
+  #main .framer-fa7omi-container  { position: absolute !important; left: 769px !important; top: 0 !important;    width: 297px !important; }
+  #main .framer-rcao2h-container  { left: 0 !important;     right: auto !important; top: 516px !important;  width: 221px !important; }
+  #main .framer-1m44156-container { left: 538px !important; right: auto !important; top: 753px !important;  width: 375px !important; }
+  #main .framer-30g6w8-container  { left: 231px !important; right: auto !important; top: 1434px !important; width: 144px !important; }
+  #main .framer-586uht-container  { left: 922px !important; right: auto !important; top: 1537px !important; width: 221px !important; }
+  #main .framer-tqj11l-container  { left: 308px !important; right: auto !important; top: 1971px !important; width: 375px !important; }
+
+  /* Form: right column 759px (two 374px fields + 10px gap) starting at x=571 */
+  #main .framer-1mchwhm { width: 759px !important; }
+  #main .framer-1bna28u { flex: none !important; width: 461px !important; }
+  #main .framer-1m37rxd { width: 759px !important; }
+  #main :is(.framer-1hg3ocd, .framer-nyezs4) { flex: none !important; width: 374px !important; }
+  #main .framer-1m37rxd { justify-content: flex-start !important; gap: 10px !important; }
+  #main .framer-1m37rxd .framer-06l5a { width: 100% !important; margin: 0 !important; left: 0 !important; }
+}
+
+/* Benefits reveal (driven by data-benefits from custom.js): (01) first, (02) right after.
+   All widths: Framer's own phone trigger for (01) needs the block 100% in view and never fires. */
+#main :is(.framer-1sho9fs, .framer-123ngsh) {
+  opacity: 0 !important; transform: translateY(150px) !important;
+  transition: opacity .8s ease, transform 1s cubic-bezier(.22, 1, .36, 1) !important;
+}
+html[data-benefits] #main .framer-1sho9fs { opacity: 1 !important; transform: none !important; transition-delay: .2s !important; }
+html[data-benefits] #main .framer-123ngsh { opacity: 1 !important; transform: none !important; transition-delay: .7s !important; }
+
+@media (min-width: 810px) {
+/* Portfolio "MAISON ÉLITE" title: gold, then dims once its block is half in view (data-portfolio-dim from custom.js). */
+#main .framer-149697k .framer-text { color: rgb(255, 210, 143) !important; transition: color .6s ease !important; }
+html[data-portfolio-dim] #main .framer-149697k .framer-text { color: rgb(36, 45, 37) !important; }
+}
+
+/* Phone: sections below the first screen follow the Figma mobile "Продовження" frame (375 wide). */
+@media (max-width: 809.98px) {
+  /* small text is 100% line height in Figma (Framer falls back to 1.2em); big headings set their own */
+  #main :is(.framer-1xlo8wj, .framer-1go8jus, .framer-snky5l, .framer-1lqipmx, .framer-1u3x6mn) { --framer-line-height: 1em; }
+
+  /* benefits: right column at x=192, 163 wide */
+  #main :is(.framer-2rewhn, .framer-jdvivc) > :last-child { flex: none !important; width: 163px !important; margin-left: auto !important; max-width: none !important; min-width: 0 !important; }
+  /* Framer pins the description to 45% (150.75px), which clipped the (02) text */
+  #main :is(.framer-a2di7, .framer-52zg85) { width: 100% !important; flex: none !important; }
+
+  /* Our approach heading: on desktop it fills gold on hover; phones and tablets have no hover, so it is gold throughout */
+  #main .framer-opng88 :is(p, span) { --framer-text-color: rgb(255, 210, 143) !important; color: rgb(255, 210, 143) !important; }
+
+  /* marquee: lines 81px apart */
+  #main .framer-7dx7s8 { height: 67px !important; }
+
+  /* portfolio: 20px more air between the title and the cards */
+  #main .framer-navutq { padding-bottom: 110px !important; }
+
+  /* form copy widths */
+  #main .framer-17lt7jf { width: 302px !important; }
+  #main .framer-199wsjp { width: 49px !important; flex: none !important; }
+  #main .framer-7by0vv { width: 243px !important; flex: none !important; }
+  /* fields: 34px tall, 30px apart; message field 171px */
+  #main .framer-1hg3ocd { gap: 30px !important; height: auto !important; }
+  #main .framer-1hg3ocd .framer-06l5a { height: 34px !important; }
+  #main .framer-nyezs4 { height: 171px !important; }
+  #main .framer-nyezs4 .framer-06l5a { height: 171px !important; }
+  #main .framer-06l5a :is(input, textarea) { height: 100% !important; min-height: 0 !important; }
+
+  /* footer contacts: 27px at 90% */
+  #main .framer-1fvpvfs :is(p, .framer-text) { line-height: 0.9 !important; }
+}
+
+/* Tablet (600-809px): the phone layout, scaled up with the width like the desktop is (--t = width / 375, from custom.js). */
+@media (max-width: 809.98px) {
+  /* no header menu below desktop */
+  #main .framer-xymgrm-container { display: none !important; }
+}
+@media (min-width: 600px) and (max-width: 809.98px) {
+  /* sections below the first screen */
+  #main :is(.framer-1xlo8wj, .framer-1go8jus, .framer-snky5l, .framer-1lqipmx, .framer-1u3x6mn) { zoom: var(--t, 1); }
+
+  /* first screen: the screen itself follows the viewport; its content scales by --tf so the 375x700 phone frame fits both ways */
+  #main :is(.framer-bwq5tf, .framer-5nktg4) { zoom: var(--tf, 1); }
+  /* the phone's 45px left offset grows with the zoom while the 77% width doesn't: centre the 77% block instead */
+  #main .framer-bwq5tf { left: 11.5% !important; }
+  #main .framer-eahscv { inset: calc(20px * var(--tf, 1)) !important; }
+  /* keyhole: the phone image scaled by --tf. The hole (44.8%-66.5% of the image height, the image covers by height)
+     sits halfway between the subtitle's last line (283.7 * tf from the top) and the arrow (149.7 * tf above the bottom):
+     hole middle = 50% + 67 * tf, i.e. layer top = 50% + 67tf - 0.5568 * 909.44tf */
+  #main .framer-melogr {
+    /* at least as wide as the screen; the image covers by height, so the hole keeps its size */
+    width: max(112%, 420px * var(--tf, 1)) !important; height: calc(909.44px * var(--tf, 1)) !important;
+    left: calc(50% - max(56%, 210px * var(--tf, 1))) !important; top: calc(50% - 439.4px * var(--tf, 1)) !important;
+  }
+  /* logo: 37px in the centre of the keyhole circle (49.5% of the layer), 49px 20px below the top in the header state */
+  #main .framer-v-1aua4hr .framer-100nmfr { top: calc(50% + 10.8px * var(--tf, 1)) !important; width: calc(37px * var(--tf, 1)) !important; height: calc(37px * var(--tf, 1)) !important; }
+  #main .framer-v-4tn2jk .framer-100nmfr { width: calc(49px * var(--tf, 1)) !important; height: calc(49px * var(--tf, 1)) !important; top: calc(20px * var(--tf, 1)) !important; }
+  #main .framer-1vs89zy { width: 100% !important; height: 100% !important; }
+
+  /* form popup: the 335x418 phone popup, centred and scaled to fit the screen both ways */
+  .framer-v9wAH.framer-13yjfnc-container {
+    left: calc(50% - 167.5px) !important; right: auto !important; width: 335px !important;
+    transform: scale(var(--tf, 1));
+  }
+}
