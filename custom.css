@@ -105,9 +105,12 @@ html[data-top] #main .framer-bwq5tf :is(h1, p, .framer-text) { pointer-events: a
   #main .framer-1a3ueak { display: flex !important; width: 100% !important; height: auto !important; }
   #main .framer-9qpx7k { margin: calc(15 * var(--u)) 0 0 calc(158 * var(--u)) !important; width: calc(187 * var(--u)) !important; }
 
-  /* scroll down */
+  /* scroll down: 46px (Figma, 1440x810) below the keyhole. The keyhole image covers the screen, so its hole grows
+     with --k: hole bottom = 50% + 0.16543 * 810 * k = 50% + 134k. Anchoring to the screen bottom instead let the
+     arrow run into the hole on wide, short windows. Kept 20px above the bottom edge on extreme shapes. */
   #main .framer-5nktg4 {
-    left: calc(50% - 51.5 * var(--u)) !important; right: auto !important; top: auto !important; bottom: calc(110 * var(--u)) !important;
+    left: calc(50% - 51.5 * var(--u)) !important; right: auto !important; bottom: auto !important;
+    top: min(calc(50% + 134 * var(--k) + 46 * var(--u)), calc(100% - 135 * var(--u))) !important;
     width: calc(103 * var(--u)) !important; height: calc(115 * var(--u)) !important; display: block !important;
   }
   #main .framer-1fkczi2 { position: absolute !important; left: calc(39.5 * var(--u)) !important; top: 0 !important; width: calc(24 * var(--u)) !important; height: calc(68 * var(--u)) !important; }
