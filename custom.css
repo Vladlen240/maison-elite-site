@@ -1,13 +1,15 @@
 /* Framer refers to some text as "HelveticaNeueCyr" and "Carl Brown" but only ships the files under their
    style names ("HelveticaNeueCyr Thin", "Carl Brown Regular", ...). Without these aliases those texts fall back to
    whatever is installed locally (fine on a machine with the fonts, Arial on a Mac without them). */
+/* The only font on the site is Inter Tight (SIL OFL): ExtraLight for headings, Regular for text. "Carl Brown" (accent letters, the ticker phrase) takes the style of the text around it,
+   and Framer's default "Inter" loads Inter Tight Regular. */
 /* Helvetica (Helvetica Now Display, HelveticaNeueCyr) is replaced with Inter Tight (SIL OFL, free for commercial use):
-   the Framer family names stay, but every one of their files is now an Inter Tight weight (assets/InterTight-*.woff2). */
-@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-Thin.woff2") format("woff2"); font-weight: 100 200; font-style: normal; font-display: swap; }
-@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+   the Framer family names stay, but every one of their files is now the Inter Tight style of the same name (Light, Roman = Regular, Italic; Helvetica Now Display Thin = Thin; HelveticaNeueCyr Thin draws as heavy as Inter Tight ExtraLight, so it gets ExtraLight; assets/InterTight-*.woff2). */
+@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-ExtraLight.woff2") format("woff2"); font-weight: 100 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-Regular.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
 @font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-Regular.woff2") format("woff2"); font-weight: 400 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-MediumItalic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
-@font-face { font-family: "Carl Brown"; src: url("assets/cs8YAogtknM15124RaZ9uUrrUg.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "HelveticaNeueCyr"; src: url("assets/InterTight-Regular.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Carl Brown"; src: url("assets/InterTight-ExtraLight.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 
 /* "Discuss the projects" scrolls to the form (custom.js). */
 #main .framer-GQaEC { cursor: pointer; }
@@ -73,7 +75,7 @@ html[data-top] #main .framer-bwq5tf :is(h1, p, .framer-text) { pointer-events: a
   #main .framer-1azy7ph { width: 100% !important; height: auto !important; }
   #main .framer-1azy7ph :is(h1, .framer-text) {
     font-size: calc(86 * var(--u)) !important; line-height: calc(90 * var(--u)) !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: -0.055em !important; /* -3% from Figma, -2.5% Inter Tight correction */
   }
   #main .framer-1azy7ph h1 * { font-size: inherit !important; line-height: inherit !important; }
   #main .framer-1azy7ph h1 { height: calc(90 * var(--u)) !important; overflow: visible !important; }
@@ -100,9 +102,9 @@ html[data-top] #main .framer-bwq5tf :is(h1, p, .framer-text) { pointer-events: a
   #main .framer-l7pzan { position: relative !important; display: block !important; width: calc(187 * var(--u)) !important; height: calc(97 * var(--u)) !important; }
   #main .framer-l5w3xv { position: absolute !important; inset: 0 auto auto 0 !important; display: block !important; width: calc(187 * var(--u)) !important; height: calc(84 * var(--u)) !important; }
   #main .framer-4zymwx { position: absolute !important; left: 0 !important; top: calc(6 * var(--u)) !important; width: calc(135 * var(--u)) !important; height: calc(77 * var(--u)) !important; }
-  #main .framer-15vy636 { position: absolute !important; left: calc(135 * var(--u)) !important; top: 0 !important; width: calc(52 * var(--u)) !important; height: calc(84 * var(--u)) !important; }
-  #main .framer-4zymwx :is(h1, .framer-text) { font-size: calc(86 * var(--u)) !important; line-height: calc(77 * var(--u)) !important; letter-spacing: -0.05em !important; }
-  #main .framer-15vy636 :is(h1, .framer-text) { font-size: calc(86 * var(--u)) !important; line-height: calc(84 * var(--u)) !important; letter-spacing: 0 !important; }
+  #main .framer-15vy636 { position: absolute !important; left: calc(127.5 * var(--u)) !important; /* the "+" touches the last 0 (0 px between the glyphs) */ top: 0 !important; width: calc(52 * var(--u)) !important; height: calc(84 * var(--u)) !important; }
+  #main .framer-4zymwx :is(h1, .framer-text) { font-size: calc(86 * var(--u)) !important; line-height: calc(77 * var(--u)) !important; letter-spacing: -0.075em !important; white-space: nowrap !important; } /* "200" never wraps, or its last 0 drops out of the box */
+  #main .framer-15vy636 :is(h1, .framer-text) { font-size: calc(86 * var(--u)) !important; line-height: calc(84 * var(--u)) !important; letter-spacing: -0.025em !important; }
   #main .framer-ng3xs1 { position: absolute !important; left: calc(4 * var(--u)) !important; top: calc(83 * var(--u)) !important; }
   #main .framer-1a3ueak { display: flex !important; width: 100% !important; height: auto !important; }
   #main .framer-9qpx7k { margin: calc(15 * var(--u)) 0 0 calc(158 * var(--u)) !important; width: calc(187 * var(--u)) !important; }
@@ -125,7 +127,7 @@ html[data-top] #main .framer-bwq5tf :is(h1, p, .framer-text) { pointer-events: a
 
   /* all small captions: 14px, line height 100% */
   #main :is(.framer-1ns00q9, .framer-dacss9, .framer-17tbeqp, .framer-y2uh28, .framer-1jfwnz3, .framer-ng3xs1, .framer-9qpx7k, .framer-1dzsz08) :is(p, h1, h2, h3, .framer-text) {
-    font-size: calc(14 * var(--u)) !important; line-height: 1 !important; letter-spacing: 0 !important;
+    font-size: calc(14 * var(--u)) !important; line-height: 1 !important; letter-spacing: 0.035em !important;
   }
 }
 
@@ -138,7 +140,7 @@ html[data-top] #main .framer-bwq5tf :is(h1, p, .framer-text) { pointer-events: a
   /* headline 42px / 90%, -3%; 238px wide, 20px above the subtitle */
   #main .framer-11rf8cc { width: 238px !important; gap: 20px !important; }
   #main .framer-1azy7ph { width: 238px !important; }
-  #main .framer-1azy7ph :is(h1, .framer-text) { font-size: 42px !important; line-height: 0.9 !important; letter-spacing: -0.03em !important; }
+  #main .framer-1azy7ph :is(h1, .framer-text) { font-size: 42px !important; line-height: 0.9 !important; letter-spacing: -0.055em !important; }
   #main .framer-1azy7ph h1 * { font-size: inherit !important; line-height: inherit !important; }
   /* subtitle 12px / 100%, 228px wide */
   #main .framer-c8bkar { width: 228px !important; }
@@ -283,3 +285,50 @@ html[data-portfolio-dim] #main .framer-149697k .framer-text { color: rgb(36, 45,
     transform: scale(var(--tf, 1));
   }
 }
+
+/* Inter Tight sets wider or narrower than the Helvetica it replaced, so each style gets its own tracking correction
+   (measured against the old Helvetica files: same text, same width as before). Registering the Framer variable as a
+   <length> lets its unitless "0" take part in calc(). */
+@property --framer-letter-spacing { syntax: "<length>"; inherits: true; initial-value: 0px; }
+.framer-text[style*='HelveticaNeueCyr Thin'],
+.framer-text[style*='"HelveticaNeueCyr"'][style*='font-weight:100'],
+.framer-text[style*='"HelveticaNeueCyr"'][style*='font-weight: 100'],
+.framer-text.framer-styles-preset-yma2re,
+[style*='HelveticaNeueCyr Thin'] .framer-text:not([style*='font-family']),
+[style*='"HelveticaNeueCyr"'][style*='font-weight:100'] .framer-text:not([style*='font-family']),
+[style*='"HelveticaNeueCyr"'][style*='font-weight: 100'] .framer-text:not([style*='font-family']),
+.framer-styles-preset-yma2re .framer-text:not([style*='font-family']) { letter-spacing: calc(var(--framer-letter-spacing) - .025em); }
+.framer-text[style*='HelveticaNeueCyr Roman'],
+.framer-text[style*='"HelveticaNeueCyr"'][style*='font-weight:400'],
+.framer-text[style*='"HelveticaNeueCyr"'][style*='font-weight: 400'],
+[style*='HelveticaNeueCyr Roman'] .framer-text:not([style*='font-family']),
+[style*='"HelveticaNeueCyr"'][style*='font-weight:400'] .framer-text:not([style*='font-family']),
+[style*='"HelveticaNeueCyr"'][style*='font-weight: 400'] .framer-text:not([style*='font-family']) { letter-spacing: calc(var(--framer-letter-spacing) + .035em); }
+.framer-text[style*='HelveticaNeueCyr Light'],
+.framer-text[style*='Helvetica Now Display Light'],
+[style*='HelveticaNeueCyr Light'] .framer-text:not([style*='font-family']),
+[style*='Helvetica Now Display Light'] .framer-text:not([style*='font-family']) { letter-spacing: var(--framer-letter-spacing); }
+.framer-text[style*='Helvetica Now Display Regular'],
+[style*='Helvetica Now Display Regular'] .framer-text:not([style*='font-family']) { letter-spacing: var(--framer-letter-spacing); }
+.framer-text[style*='HelveticaNeueCyr Italic'],
+[style*='HelveticaNeueCyr Italic'] .framer-text:not([style*='font-family']) { letter-spacing: calc(var(--framer-letter-spacing) - .05em); }
+.framer-text[style*='Helvetica Now Display Thin'],
+[style*='Helvetica Now Display Thin'] .framer-text:not([style*='font-family']) { letter-spacing: calc(var(--framer-letter-spacing) - .035em); }
+
+/* former Carl Brown accent letters: the same font, weight and tracking as the word they sit in */
+.framer-text[style*='Carl Brown'] { font-family: inherit !important; font-weight: inherit !important; letter-spacing: inherit !important; }
+/* in "LET'S CREATE SOMETHING BEAUTIFUL NOW" the paragraph itself has no font, so the letters take their neighbours' style explicitly */
+[data-framer-name^="LET'S CREATE"] .framer-text[style*='Carl Brown'] { font-family: "HelveticaNeueCyr" !important; font-weight: 100 !important; letter-spacing: calc(var(--framer-letter-spacing) - .025em) !important; }
+
+/* two styles on the whole site: headings (Framer "Thin" names, Inter, Carl Brown) load Inter Tight ExtraLight 200, all other text Inter Tight Regular 400;
+   form fields had no font of their own (system Arial), so they get it too */
+@font-face { font-family: "Inter Tight"; src: url("assets/InterTight-Regular.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+input, textarea, select, button { font-family: "Inter Tight", sans-serif !important; font-weight: 400 !important; }
+/* a few heading letters (the É in "MAISON ÉLITE IS A…") were set in Helvetica Now Display Light inside a thin heading;
+   they follow the heading: ExtraLight with its tracking */
+[style*='HelveticaNeueCyr Thin'] .framer-text[style*='Helvetica Now Display Light'],
+.framer-text:has(> .framer-text[style*='HelveticaNeueCyr Thin']) > .framer-text[style*='Helvetica Now Display Light'] { font-family: "HelveticaNeueCyr Thin" !important; font-weight: 100 !important; letter-spacing: calc(var(--framer-letter-spacing) - .025em) !important; }
+
+/* ticker ("Where every detail tells a story"): its boxes only need to clip sideways for the scroll;
+   vertically they cut off the tops and the descenders (y) of Inter Tight, especially on phones */
+.framer-7dx7s8, .framer-1lr5c8x { overflow-x: clip !important; overflow-y: visible !important; }
