@@ -332,6 +332,8 @@ input, textarea, select, button { font-family: "Inter Tight", sans-serif !import
 /* ticker ("Where every detail tells a story"): its boxes only need to clip sideways for the scroll;
    vertically they cut off the tops and the descenders (y) of Inter Tight, especially on phones */
 .framer-7dx7s8, .framer-1lr5c8x { overflow-x: clip !important; overflow-y: visible !important; }
+/* the ticker paragraph is Carl Brown itself, so "inherit" above gave it the system sans-serif: Inter Tight Regular (Roman) */
+.framer-1lr5c8x .framer-text[style*='Carl Brown'] { font-family: "Inter Tight", sans-serif !important; font-weight: 400 !important; }
 
 /* Mobile gallery: 278px cards 10px apart as in Figma. The slideshow sizes each slide as 86.96% of its own width,
    so the box is narrowed to 331.2px (slide = 288px) instead of the slides, which would break its paging. */
