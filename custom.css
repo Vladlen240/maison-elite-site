@@ -338,5 +338,5 @@ input, textarea, select, button { font-family: "Inter Tight", sans-serif !import
 /* Mobile gallery: 278px cards 10px apart as in Figma. The slideshow sizes each slide as 86.96% of its own width,
    so the box is narrowed to 331.2px (slide = 288px) instead of the slides, which would break its paging. */
 @media (max-width: 809.98px) {
-  #main .framer-c370ot-container { width: 331.2px !important; flex: none !important; }
+  html.gallery-ready #main .framer-c370ot-container { width: 331.2px !important; flex: none !important; }
 }
